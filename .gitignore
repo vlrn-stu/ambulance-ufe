@@ -4,3 +4,4 @@ loader/
 node_modules/
 .stencil/
 screenshot/
+.openapi.json

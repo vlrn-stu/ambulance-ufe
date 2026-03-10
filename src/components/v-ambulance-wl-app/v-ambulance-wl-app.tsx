@@ -14,6 +14,8 @@ export class VAmbulanceWlApp {
   @State() private relativePath = "";
 
   @Prop() basePath: string="";
+  @Prop() apiBase: string;
+  @Prop() ambulanceId: string;
 
   componentWillLoad() {
     const baseUri = new URL(this.basePath, document.baseURI || "/").pathname;
@@ -54,9 +56,9 @@ export class VAmbulanceWlApp {
       <Host>
         { element === "editor"
         ? <v-ambulance-wl-editor entry-id={entryId}
-            oneditor-closed={ () => navigate("./list")} >
-          </v-ambulance-wl-editor>
-        : <v-ambulance-wl-list
+            oneditor-closed={ () => navigate("./list")}
+          ></v-ambulance-wl-editor>
+        : <v-ambulance-wl-list  ambulance-id={this.ambulanceId} api-base={this.apiBase}
             onentry-clicked={ (ev: CustomEvent<string>)=> navigate("./entry/" + ev.detail) } >
           </v-ambulance-wl-list>
         }

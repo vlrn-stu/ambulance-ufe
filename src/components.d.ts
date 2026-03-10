@@ -7,6 +7,8 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface VAmbulanceWlApp {
+        "ambulanceId": string;
+        "apiBase": string;
         /**
           * @default ""
          */
@@ -16,6 +18,8 @@ export namespace Components {
         "entryId": string;
     }
     interface VAmbulanceWlList {
+        "ambulanceId": string;
+        "apiBase": string;
     }
 }
 export interface VAmbulanceWlEditorCustomEvent<T> extends CustomEvent<T> {
@@ -75,6 +79,8 @@ declare global {
 }
 declare namespace LocalJSX {
     interface VAmbulanceWlApp {
+        "ambulanceId"?: string;
+        "apiBase"?: string;
         /**
           * @default ""
          */
@@ -85,20 +91,28 @@ declare namespace LocalJSX {
         "onEditor-closed"?: (event: VAmbulanceWlEditorCustomEvent<string>) => void;
     }
     interface VAmbulanceWlList {
+        "ambulanceId"?: string;
+        "apiBase"?: string;
         "onEntry-clicked"?: (event: VAmbulanceWlListCustomEvent<string>) => void;
     }
 
     interface VAmbulanceWlAppAttributes {
         "basePath": string;
+        "apiBase": string;
+        "ambulanceId": string;
     }
     interface VAmbulanceWlEditorAttributes {
         "entryId": string;
+    }
+    interface VAmbulanceWlListAttributes {
+        "apiBase": string;
+        "ambulanceId": string;
     }
 
     interface IntrinsicElements {
         "v-ambulance-wl-app": Omit<VAmbulanceWlApp, keyof VAmbulanceWlAppAttributes> & { [K in keyof VAmbulanceWlApp & keyof VAmbulanceWlAppAttributes]?: VAmbulanceWlApp[K] } & { [K in keyof VAmbulanceWlApp & keyof VAmbulanceWlAppAttributes as `attr:${K}`]?: VAmbulanceWlAppAttributes[K] } & { [K in keyof VAmbulanceWlApp & keyof VAmbulanceWlAppAttributes as `prop:${K}`]?: VAmbulanceWlApp[K] };
         "v-ambulance-wl-editor": Omit<VAmbulanceWlEditor, keyof VAmbulanceWlEditorAttributes> & { [K in keyof VAmbulanceWlEditor & keyof VAmbulanceWlEditorAttributes]?: VAmbulanceWlEditor[K] } & { [K in keyof VAmbulanceWlEditor & keyof VAmbulanceWlEditorAttributes as `attr:${K}`]?: VAmbulanceWlEditorAttributes[K] } & { [K in keyof VAmbulanceWlEditor & keyof VAmbulanceWlEditorAttributes as `prop:${K}`]?: VAmbulanceWlEditor[K] };
-        "v-ambulance-wl-list": VAmbulanceWlList;
+        "v-ambulance-wl-list": Omit<VAmbulanceWlList, keyof VAmbulanceWlListAttributes> & { [K in keyof VAmbulanceWlList & keyof VAmbulanceWlListAttributes]?: VAmbulanceWlList[K] } & { [K in keyof VAmbulanceWlList & keyof VAmbulanceWlListAttributes as `attr:${K}`]?: VAmbulanceWlListAttributes[K] } & { [K in keyof VAmbulanceWlList & keyof VAmbulanceWlListAttributes as `prop:${K}`]?: VAmbulanceWlList[K] };
     }
 }
 export { LocalJSX as JSX };
