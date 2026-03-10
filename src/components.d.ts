@@ -6,24 +6,98 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface VAmbulanceWlApp {
+        /**
+          * @default ""
+         */
+        "basePath": string;
+    }
+    interface VAmbulanceWlEditor {
+        "entryId": string;
+    }
     interface VAmbulanceWlList {
     }
 }
+export interface VAmbulanceWlEditorCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLVAmbulanceWlEditorElement;
+}
+export interface VAmbulanceWlListCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLVAmbulanceWlListElement;
+}
 declare global {
+    interface HTMLVAmbulanceWlAppElement extends Components.VAmbulanceWlApp, HTMLStencilElement {
+    }
+    var HTMLVAmbulanceWlAppElement: {
+        prototype: HTMLVAmbulanceWlAppElement;
+        new (): HTMLVAmbulanceWlAppElement;
+    };
+    interface HTMLVAmbulanceWlEditorElementEventMap {
+        "editor-closed": string;
+    }
+    interface HTMLVAmbulanceWlEditorElement extends Components.VAmbulanceWlEditor, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLVAmbulanceWlEditorElementEventMap>(type: K, listener: (this: HTMLVAmbulanceWlEditorElement, ev: VAmbulanceWlEditorCustomEvent<HTMLVAmbulanceWlEditorElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLVAmbulanceWlEditorElementEventMap>(type: K, listener: (this: HTMLVAmbulanceWlEditorElement, ev: VAmbulanceWlEditorCustomEvent<HTMLVAmbulanceWlEditorElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLVAmbulanceWlEditorElement: {
+        prototype: HTMLVAmbulanceWlEditorElement;
+        new (): HTMLVAmbulanceWlEditorElement;
+    };
+    interface HTMLVAmbulanceWlListElementEventMap {
+        "entry-clicked": string;
+    }
     interface HTMLVAmbulanceWlListElement extends Components.VAmbulanceWlList, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLVAmbulanceWlListElementEventMap>(type: K, listener: (this: HTMLVAmbulanceWlListElement, ev: VAmbulanceWlListCustomEvent<HTMLVAmbulanceWlListElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLVAmbulanceWlListElementEventMap>(type: K, listener: (this: HTMLVAmbulanceWlListElement, ev: VAmbulanceWlListCustomEvent<HTMLVAmbulanceWlListElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLVAmbulanceWlListElement: {
         prototype: HTMLVAmbulanceWlListElement;
         new (): HTMLVAmbulanceWlListElement;
     };
     interface HTMLElementTagNameMap {
+        "v-ambulance-wl-app": HTMLVAmbulanceWlAppElement;
+        "v-ambulance-wl-editor": HTMLVAmbulanceWlEditorElement;
         "v-ambulance-wl-list": HTMLVAmbulanceWlListElement;
     }
 }
 declare namespace LocalJSX {
-    interface VAmbulanceWlList {
+    interface VAmbulanceWlApp {
+        /**
+          * @default ""
+         */
+        "basePath"?: string;
     }
+    interface VAmbulanceWlEditor {
+        "entryId"?: string;
+        "onEditor-closed"?: (event: VAmbulanceWlEditorCustomEvent<string>) => void;
+    }
+    interface VAmbulanceWlList {
+        "onEntry-clicked"?: (event: VAmbulanceWlListCustomEvent<string>) => void;
+    }
+
+    interface VAmbulanceWlAppAttributes {
+        "basePath": string;
+    }
+    interface VAmbulanceWlEditorAttributes {
+        "entryId": string;
+    }
+
     interface IntrinsicElements {
+        "v-ambulance-wl-app": Omit<VAmbulanceWlApp, keyof VAmbulanceWlAppAttributes> & { [K in keyof VAmbulanceWlApp & keyof VAmbulanceWlAppAttributes]?: VAmbulanceWlApp[K] } & { [K in keyof VAmbulanceWlApp & keyof VAmbulanceWlAppAttributes as `attr:${K}`]?: VAmbulanceWlAppAttributes[K] } & { [K in keyof VAmbulanceWlApp & keyof VAmbulanceWlAppAttributes as `prop:${K}`]?: VAmbulanceWlApp[K] };
+        "v-ambulance-wl-editor": Omit<VAmbulanceWlEditor, keyof VAmbulanceWlEditorAttributes> & { [K in keyof VAmbulanceWlEditor & keyof VAmbulanceWlEditorAttributes]?: VAmbulanceWlEditor[K] } & { [K in keyof VAmbulanceWlEditor & keyof VAmbulanceWlEditorAttributes as `attr:${K}`]?: VAmbulanceWlEditorAttributes[K] } & { [K in keyof VAmbulanceWlEditor & keyof VAmbulanceWlEditorAttributes as `prop:${K}`]?: VAmbulanceWlEditor[K] };
         "v-ambulance-wl-list": VAmbulanceWlList;
     }
 }
@@ -31,6 +105,8 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "v-ambulance-wl-app": LocalJSX.IntrinsicElements["v-ambulance-wl-app"] & JSXBase.HTMLAttributes<HTMLVAmbulanceWlAppElement>;
+            "v-ambulance-wl-editor": LocalJSX.IntrinsicElements["v-ambulance-wl-editor"] & JSXBase.HTMLAttributes<HTMLVAmbulanceWlEditorElement>;
             "v-ambulance-wl-list": LocalJSX.IntrinsicElements["v-ambulance-wl-list"] & JSXBase.HTMLAttributes<HTMLVAmbulanceWlListElement>;
         }
     }
